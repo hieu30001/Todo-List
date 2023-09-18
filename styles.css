@@ -1,0 +1,131 @@
+  html{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    margin: 0;
+  }
+
+  body {
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    margin: 0;
+  }
+  .body{
+    background-color: gray;
+    height: 500px;
+    width: 900px;
+    text-align: center;
+    margin-top: 0px;
+    
+  }
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+  
+    background-color: white;
+    padding: 6rem;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 1.2rem;
+    right: 2rem;
+    font-size: 5rem;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  .head {
+    background-color: rgb(134, 164, 221);
+    height: 70px;
+    width: 900px;
+    text-align: center;
+
+  }
+
+  .btn {  
+
+    border: none;  color: white;  
+    padding: 3px 15px;  text-align: center;  
+    /* text-decoration: none;  display: inline-block;   */
+    font-size: 16px;  margin: 4px 2px;  -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;  
+    cursor: pointer;  
+    border-radius: 4px;
+
+    background-color: white;   
+    color: black;   
+    border: 2px solid crimson;
+
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;}.button:hover {  background-color: crimson;  color: white;
+  }
+
+  table{
+    background-color: gray;
+  }
+
+  td{
+    width: 600px;
+  }
+
+  .td_1 {
+    text-align: left;
+    padding-left: 70px;
+    overflow-wrap: break-word;
+  }
+
+  .td_2{
+    text-align: right;
+    padding-right: 70px;
+  }
+
+  .div_edit{
+    text-align: right;
+    width: 830px;
+  }
+  .ip_edit{
+    border: 2px solid purple;  
+    border-radius: 4px; 
+    height: 25px;
+    width: 124px;
+  }
+  input{
+    color: #000000;
+  }
+
+  span{
+    color: orange;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+  }
+
+  #ip_text{
+    border: 2px solid purple;  
+    border-radius: 4px; 
+    height: 25px;
+    width: 400px;
+    margin-top: 20px;
+  }
+
+  .check_box{
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+  }
+  

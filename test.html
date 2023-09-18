@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <input type="text" id="ip_text" placeholder="Enter a task">
+    <button class="btn_submit">Add</button>
+    <div class="head"></div>
+    <div class="modal hidden">
+        <div id="item"></div>
+        <button class="close-modal">Close</button>
+    </div>
+
+    <script>
+        const btnSubmit = document.querySelector('.btn_submit');
+        const head = document.querySelector('.head');
+        const modal = document.querySelector('.modal');
+        const closeModal = document.querySelector('.close-modal');
+        let count = 0;
+
+        // Hàm để lưu danh sách các mục vào localStorage
+        function saveTodoList() {
+            const todos = [];
+            const todoElements = document.querySelectorAll('.todo-item');
+
+            todoElements.forEach(todoElement => {
+                const id = todoElement.dataset.id;
+                const text = todoElement.querySelector('.todo-text').textContent;
+                todos.push({ id, text });
+            });
+
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+
+        // Hàm để hiển thị danh sách các mục từ localStorage
+        function loadTodoList() {
+            const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+
+            for (const todo of savedTodos) {
+                createTodoItem(todo.id, todo.text);
+            }
+        }
+
+        // Hàm để tạo một mục mới
+        function createTodoItem(id, text) {
+            const todoItem = document.createElement('div');
+            todoItem.classList.add('todo-item');
+            todoItem.dataset.id = id;
+
+            todoItem.innerHTML = `
+                <span class="todo-text">${text}</span>
+                <button class="btn_view">View</button>
+                <button class="btn_edit">Edit</button>
+                <button class="btn_delete">Delete</button>
+            `;
+
+            head.appendChild(todoItem);
+
+            // Sự kiện xem
+            const btnView = todoItem.querySelector('.btn_view');
+            btnView.addEventListener('click', function () {
+                const itemDiv = document.querySelector('#item');
+                const textSpan = todoItem.querySelector('.todo-text').textContent;
+                itemDiv.textContent = textSpan;
+                modal.classList.remove('hidden');
+            });
+
+            // Sự kiện đóng modal
+            closeModal.addEventListener('click', function () {
+                modal.classList.add('hidden');
+            });
+
+            // Sự kiện chỉnh sửa
+            const btnEdit = todoItem.querySelector('.btn_edit');
+            btnEdit.addEventListener('click', function () {
+                // Code chỉnh sửa ở đây
+            });
+
+            // Sự kiện xóa
+            const btnDelete = todoItem.querySelector('.btn_delete');
+            btnDelete.addEventListener('click', function () {
+                todoItem.remove();
+                saveTodoList(); // Lưu trạng thái sau khi xóa
+            });
+        }
+
+        // Gọi hàm loadTodoList để hiển thị danh sách khi tải trang
+        loadTodoList();
+
+        btnSubmit.addEventListener('click', function () {
+            let a = document.getElementById('ip_text').value;
+            console.log(a);
+
+            count++;
+            const currentCount = count;
+            createTodoItem(currentCount, a);
+            saveTodoList(); // Lưu trạng thái sau khi thêm mới
+
+            document.getElementById('ip_text').value = ''; // Xóa giá trị ô input
+        });
+    </script>
+</body>
+</html>
